@@ -24,3 +24,9 @@ services:
       - "./:/importer"
     working_dir: /importer
     entrypoint: "/importer/run_standalone.sh"
+  proxy:
+    image: confluent/rest-proxy
+    ports:
+      - "8082:8082"
+    links:
+      - kafka:kafka
