@@ -8,10 +8,13 @@ services:
     environment:
       ADVERTISED_HOST: kafka
   elasticsearch:
-    image: elasticsearch:2.2.1
+    image: nshou/elasticsearch-kibana:latest
+    environment:
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+      transport.host: 0.0.0.0
     ports:
       - "9200:9200"
-      - "9300:9300"
+      - "5601:5601"
   importer:
     build: .
     depends_on:
